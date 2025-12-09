@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Layout from "../../components/Layout/Layout";
+import { toast } from "react-toastify";
 
 const RegisterPage = () => {
   const [name, setName] = useState("");
@@ -11,69 +12,94 @@ const RegisterPage = () => {
   const handelSubmit = (e) => {
     e.preventDefault();
     console.log(name, email, password, phone, address);
+    toast.success("Sushil loves RRRUCHHIIIII");
   };
 
   return (
     <Layout title={"register - Suruchi"}>
-      <div className="register">
-        <h1>Register Page</h1>
-        <form onSubmit={handelSubmit}>
-          <div className="mb-3">
-            <input
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              className="form-control"
-              id="exampleInputName"
-              placeholder="Enter your Name"
-              required
-            />
+      <div className="auth-container">
+        <div className="auth-card">
+          <h2>Create Account</h2>
+          <p>Join us and start shopping amazing products</p>
+          <form onSubmit={handelSubmit}>
+            <div className="mb-2">
+              <label htmlFor="name" className="form-label">
+                Full Name
+              </label>
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className="form-control"
+                id="name"
+                placeholder="Enter your full name"
+                required
+              />
+            </div>
+            <div className="mb-2">
+              <label htmlFor="email" className="form-label">
+                Email Address
+              </label>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setemail(e.target.value)}
+                className="form-control"
+                id="email"
+                placeholder="Enter your email"
+                required
+              />
+            </div>
+            <div className="mb-2">
+              <label htmlFor="phone" className="form-label">
+                Phone Number
+              </label>
+              <input
+                type="text"
+                value={phone}
+                onChange={(e) => setphone(e.target.value)}
+                className="form-control"
+                id="phone"
+                placeholder="Enter your phone number"
+                required
+              />
+            </div>
+            <div className="mb-2">
+              <label htmlFor="address" className="form-label">
+                Address
+              </label>
+              <input
+                type="text"
+                value={address}
+                onChange={(e) => setaddres(e.target.value)}
+                className="form-control"
+                id="address"
+                placeholder="Enter your address"
+                required
+              />
+            </div>
+            <div className="mb-2">
+              <label htmlFor="password" className="form-label">
+                Password
+              </label>
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setpassword(e.target.value)}
+                className="form-control"
+                id="password"
+                placeholder="Enter your password"
+                required
+              />
+            </div>
+            <button type="submit" className="btn btn-primary w-100 py-2">
+              Register
+            </button>
+          </form>
+          <div className="auth-toggle">
+            Already have an account? <a href="/login">Login here</a>
           </div>
-          <div className="mb-3">
-            <input
-              type="text"
-              value={address}
-              onChange={(e) => setaddres(e.target.value)}
-              className="form-control"
-              placeholder="Enter your Address"
-              required
-            />
-          </div>
-          <div className="mb-3">
-            <input
-              type="text"
-              value={phone}
-              onChange={(e) => setphone(e.target.value)}
-              className="form-control"
-              placeholder="Enter your phone"
-              required
-            />
-          </div>
-          <div className="mb-3">
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setemail(e.target.value)}
-              className="form-control"
-              id="exampleInputEmail1"
-              placeholder=" Enter your Email"
-              required
-            />
-          </div>
-          <div className="mb-3">
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setpassword(e.target.value)}
-              className="form-control"
-              placeholder=" Enter your Password"
-              required
-            />
-          </div>
-          <button type="submit" className="btn btn-primary">
-            Submit
-          </button>
-        </form>
+        </div>
       </div>
     </Layout>
   );
